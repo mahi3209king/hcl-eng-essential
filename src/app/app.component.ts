@@ -4,9 +4,12 @@ import { CounterComponent } from './counter/counter.component';
 @Component({
   selector: 'app-root',
   imports: [CounterComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  template: `
+    <h1>{{ title }}</h1>  <!-- Render the title here -->
+    <app-counter></app-counter>
+  `,
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'my-angular-app';
+  title = 'Hello, my-angular-app';  // Set the title as expected by the test
 }
