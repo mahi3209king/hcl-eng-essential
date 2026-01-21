@@ -18,27 +18,36 @@ describe('CounterComponent', () => {
   });
 
   it('should create the component', () => {
-    expect(component).toBeTruthy();  // Check if the component is created
+    expect(component).toBeTruthy();  // Ensure the component is created
+  });
+
+  it('should display the initial count as 0', () => {
+    const compiled = fixture.nativeElement;
+    const counterHeading = compiled.querySelector('div.counter-container h1');
+    expect(counterHeading.textContent).toContain('Counter: 0');  // Assert that the count is initialized to 0
   });
 
   it('should increment the count when increment button is clicked', () => {
     component.increment();  // Call the increment method
-    fixture.detectChanges();  // Trigger change detection to update the DOM
+    fixture.detectChanges();  // Trigger change detection
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Counter: 1');  // Check if count is incremented
+    const counterHeading = compiled.querySelector('div.counter-container h1');
+    expect(counterHeading.textContent).toContain('Counter: 1');  // Assert that the count is incremented
   });
 
   it('should decrement the count when decrement button is clicked', () => {
     component.decrement();  // Call the decrement method
     fixture.detectChanges();  // Trigger change detection
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Counter: -1');  // Check if count is decremented
+    const counterHeading = compiled.querySelector('div.counter-container h1');
+    expect(counterHeading.textContent).toContain('Counter: -1');  // Assert that the count is decremented
   });
 
   it('should reset the count when reset button is clicked', () => {
     component.reset();  // Call the reset method
     fixture.detectChanges();  // Trigger change detection
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Counter: 0');  // Ensure count is reset to 0
+    const counterHeading = compiled.querySelector('div.counter-container h1');
+    expect(counterHeading.textContent).toContain('Counter: 0');  // Assert that the count is reset to 0
   });
 });
